@@ -1,0 +1,29 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 512
+
+exporters:
+  otlp:                       # <— usar OTLP, no 'jaeger'
+    endpoint: jaeger:4317     # Jaeger escucha OTLP gRPC internamente
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]       # <— exporta por OTLP
+
+  telemetry:
+    metrics:
+      address: ":8888"        # /metrics del collector (para Prometheus)

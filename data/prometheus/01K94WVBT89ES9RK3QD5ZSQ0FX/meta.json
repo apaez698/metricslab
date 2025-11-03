@@ -1,0 +1,17 @@
+{
+	"ulid": "01K94WVBT89ES9RK3QD5ZSQ0FX",
+	"minTime": 1762164004700,
+	"maxTime": 1762171200000,
+	"stats": {
+		"numSamples": 60615,
+		"numSeries": 114,
+		"numChunks": 457
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01K94WVBT89ES9RK3QD5ZSQ0FX"
+		]
+	},
+	"version": 1
+}
